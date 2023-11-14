@@ -1,0 +1,1 @@
+# nix-hyperland-nvidia-config

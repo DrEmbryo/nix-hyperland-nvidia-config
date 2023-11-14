@@ -138,6 +138,7 @@
      wget
      neofetch
      git
+     vscode
      hyprland
      hyprpaper
      waybar
@@ -151,6 +152,10 @@
      xwayland
   ];
 
+  # programs
+
+ 
+  # fonts
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [  
     nerdfonts
@@ -189,6 +194,7 @@
     })
    ];
 
-  # version
+  # system
   system.stateVersion = "23.05";
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -47,26 +43,11 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
     services.xserver = {
         layout = "us";
         xkbVariant = "";
-       # enable = true;
-       # videoDrivers = ["nvidia"];
-       # displayManager.sddm = {
-       #    enable = true;
-       #    theme = "maya";
-       #    autoNumlock = true;
-       # };
     };
-
   
   # printers
   services.printing.enable = true;
@@ -109,8 +90,8 @@
   };
 
   environment.sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
 
@@ -134,22 +115,20 @@
 
   # packages
   environment.systemPackages = with pkgs; [
-     kitty
-     wget
-     neofetch
-     git
-     vscode
-     hyprland
-     hyprpaper
-     waybar
-     dunst
-     libnotify
-     wofi
-     sddm
-     xdg-desktop-portal-hyprland
-     xdg-desktop-portal-gtk
-     xdg-utils
-     xwayland
+    kitty
+    wget
+    neofetch
+    git
+    hyprland
+    hyprpaper
+    waybar
+    dunst
+    libnotify
+    wofi
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+    xdg-utils
+    xwayland
   ];
 
   # programs
@@ -170,20 +149,6 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # firewall
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # overlays
   nixpkgs.overlays = [

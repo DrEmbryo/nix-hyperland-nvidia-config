@@ -7,9 +7,9 @@
   home.stateVersion = "23.05";
 
   # packages
-  home.packages = [
-    # pkgs.hello
-    pkgs.dolphin
+  home.packages = with pkgs; [
+    dolphin
+    alacritty
   ];
 
   # dot files

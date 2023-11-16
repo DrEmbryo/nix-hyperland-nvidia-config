@@ -2,12 +2,13 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelParams = [ "intel_pstate=active" ];
   boot.loader = {
     grub = {
       enable = true;
@@ -45,8 +46,10 @@
 
   # Configure keymap in X11
     services.xserver = {
-        layout = "us";
-        xkbVariant = "";
+        exportConfiguration = true;
+        layout = "us,ru";
+        xkbOptions = "grp:alt_shift_toggle";
+        xkbVariant = "qwerty_digits";
     };
   
   # printers
@@ -131,8 +134,6 @@
     xwayland
   ];
 
-  # programs
-
  
   # fonts
   fonts.fontDir.enable = true;
@@ -140,7 +141,12 @@
     nerdfonts
     font-awesome
     google-fonts
+    font-awesome
+    noto-fonts-emoji
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka"  ]; })
   ];
+  services.gollum.emoji = true;
+
 
   services.dbus.enable = true;
 
